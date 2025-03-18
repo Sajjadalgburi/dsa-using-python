@@ -35,18 +35,26 @@ class LinkedList:
     def get_length(self):
         print(f"\n length of the Linked List is: {self.length}")
 
+    def print_list(self):
+        temp = self.head
+        print('\n----')
+        while temp is not None:
+            print(f'Current Value is {temp.value}')
+            # Move on to the next node until None
+            temp = temp.next
+        print('----\n')
+
     # append item at the end of the list (1)
     def append(self, value):
         new_node = Node(value)
         if self.length is None:
             self.head = new_node
             self.tail = self.head
-            self.length = 1
         else:
             self.tail.next = new_node
             self.tail = new_node
-            self.length += 1
 
+        self.length += 1
         return True
 
 
@@ -57,3 +65,4 @@ my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.get_length()
+my_linked_list.print_list()
