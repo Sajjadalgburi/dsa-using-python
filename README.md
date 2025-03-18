@@ -2,11 +2,6 @@
 
 This repository tracks my learning journey for data structures and algorithms using Python.
 
-## Structure
-
-- Each day's work is organized in its own folder with subsections and exercises
-- Progress is documented chronologically
-
 ## Purpose
 
 I'm committed to improving my:
