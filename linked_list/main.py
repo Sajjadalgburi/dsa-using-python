@@ -19,6 +19,9 @@ Additional Stuff
 '''
 
 
+from re import S
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -123,7 +126,32 @@ class LinkedList:
 
         return False
 
+    def insert(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
 
+        if index == 0:
+            return self.prepend(value)
+
+        if index == self.length:
+            return self.append(value)
+
+        temp = self.head
+        prev = self.head
+
+        new_node = Node(value)
+        for _ in range(index):
+            prev = temp
+            temp = temp.next
+
+        prev.next = new_node
+        new_node.next = temp
+
+        self.length += 1
+        return True
+
+
+# -- Random --
 # my_linked_list = LinkedList(2)
 # my_linked_list.append(3)
 # my_linked_list.append(4)
@@ -136,14 +164,23 @@ class LinkedList:
 # print(my_linked_list.pop_first())
 # my_linked_list.print_list()
 # ---------------------------------------
+# -- For Set value --
+# my_linked_list = LinkedList(0)
+# my_linked_list.append(1)
+# my_linked_list.append(2)
+# my_linked_list.append(3)
+# my_linked_list.append(4)
+# my_linked_list.append(5)
+# my_linked_list.print_list()
+# print(my_linked_list.get(3))
+# print(my_linked_list.get(100))
+# print(my_linked_list.set_value(2, 'set value'))
+# my_linked_list.print_list()
+# ---------------------------------------
+# -- For Inserting --
 my_linked_list = LinkedList(0)
-my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
-my_linked_list.append(4)
-my_linked_list.append(5)
 my_linked_list.print_list()
-print(my_linked_list.get(3))
-print(my_linked_list.get(100))
-print(my_linked_list.set_value(2, 'set value'))
+print(my_linked_list.insert(1, '1 - inserted'))
 my_linked_list.print_list()
