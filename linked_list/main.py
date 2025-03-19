@@ -57,12 +57,34 @@ class LinkedList:
         self.length += 1
         return True
 
+    # method to pop an item from the LL. This is Big O(n) where n is the lenght of the list
+    def pop(self):
+        if self.length == 0:
+            return None
+
+        temp = self.head
+        pre = self.head
+        while temp.next is not None:
+            pre = temp
+            temp = temp.next
+
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp.value
+
 
 my_linked_list = LinkedList(0)
 my_linked_list.get_length()
-my_linked_list.append(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(4)
+my_linked_list.append(100)
+my_linked_list.append(200)
 my_linked_list.get_length()
 my_linked_list.print_list()
+print(my_linked_list.pop())
+print(my_linked_list.pop())
+print(my_linked_list.pop())
+print(my_linked_list.pop())
+print(my_linked_list.pop())
