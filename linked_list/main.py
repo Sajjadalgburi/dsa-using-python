@@ -174,6 +174,22 @@ class LinkedList:
         self.length -= 1
         return True
 
+    def reverse(self):
+        if self.length is None:
+            return False
+
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        after = temp.next
+
+        while after:
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
 
 # -- Random --
 # my_linked_list = LinkedList(2)
@@ -219,3 +235,13 @@ class LinkedList:
 # my_linked_list.print_list()
 # print(my_linked_list.remove(3))
 # my_linked_list.print_list()
+# -- For Remove Method --
+my_linked_list = LinkedList(0)
+my_linked_list.append(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
+my_linked_list.print_list()
+my_linked_list.reverse()
+my_linked_list.print_list()
