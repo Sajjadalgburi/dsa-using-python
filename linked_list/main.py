@@ -87,6 +87,7 @@ class LinkedList:
             self.length += 1
         return True
 
+    # method to remove node from the begining of the linked lost. Big O(1) constant time
     def pop_first(self):
         if self.length == 0:
             return None
@@ -101,15 +102,48 @@ class LinkedList:
 
         return temp.value
 
+    # get method to return the value of a given index. Big O (n) where n is the size of the LL worst case
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return 'Out of boundry'
 
-my_linked_list = LinkedList(2)
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+
+        return temp
+
+    # set method to change the value of a give node in an index. Big O (n) where n is the size of the LL worst case
+    def set_value(self, index, value):
+        temp = self.get(index)
+
+        if temp:
+            temp.value = value
+            return True
+
+        return False
+
+
+# my_linked_list = LinkedList(2)
+# my_linked_list.append(3)
+# my_linked_list.append(4)
+# my_linked_list.append(5)
+# my_linked_list.append('last item')
+# my_linked_list.prepend(1)
+# my_linked_list.prepend('first item')
+# my_linked_list.print_list()
+# print(my_linked_list.pop())
+# print(my_linked_list.pop_first())
+# my_linked_list.print_list()
+# ---------------------------------------
+my_linked_list = LinkedList(0)
+my_linked_list.append(1)
+my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.append(5)
-my_linked_list.append('last item')
-my_linked_list.prepend(1)
-my_linked_list.prepend('first item')
 my_linked_list.print_list()
-print(my_linked_list.pop())
-print(my_linked_list.pop_first())
+print(my_linked_list.get(3))
+print(my_linked_list.get(100))
+print(my_linked_list.set_value(2, 'set value'))
 my_linked_list.print_list()
