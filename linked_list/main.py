@@ -150,6 +150,30 @@ class LinkedList:
         self.length += 1
         return True
 
+    def remove(self, index):
+        if self.length is None:
+            return None
+
+        if index < 0 or index >= self.length:
+            return False
+
+        if index == 0:
+            return self.pop_first()
+
+        if index == self.length:
+            return self.pop()
+
+        temp = self.head
+        pre = self.head
+        for _ in range(index):
+            pre = temp
+            temp = temp.next
+
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return True
+
 
 # -- Random --
 # my_linked_list = LinkedList(2)
@@ -178,9 +202,20 @@ class LinkedList:
 # my_linked_list.print_list()
 # ---------------------------------------
 # -- For Inserting --
-my_linked_list = LinkedList(0)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.print_list()
-print(my_linked_list.insert(1, '1 - inserted'))
-my_linked_list.print_list()
+# my_linked_list = LinkedList(0)
+# my_linked_list.append(2)
+# my_linked_list.append(3)
+# my_linked_list.print_list()
+# print(my_linked_list.insert(1, '1 - inserted'))
+# my_linked_list.print_list()
+# -- For Remove Method --
+# my_linked_list = LinkedList(0)
+# my_linked_list.append(1)
+# my_linked_list.append(2)
+# my_linked_list.append(3)
+# my_linked_list.append(4)
+# my_linked_list.print_list()
+# print(my_linked_list.remove(3))
+# my_linked_list.print_list()
+# print(my_linked_list.remove(3))
+# my_linked_list.print_list()
