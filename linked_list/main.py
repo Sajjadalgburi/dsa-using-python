@@ -76,11 +76,23 @@ class LinkedList:
             self.tail = None
         return temp.value
 
+    # method to add to the begining of the linked lost. Big O(1) constant time
+    def prepend(self, value):
+        if self.length is None:
+            self.append(value)
+        else:
+            new_node = Node(value)
+            new_node.next = self.head
+            self.head = new_node
+            self.length += 1
+        return True
 
-my_linked_list = LinkedList(0)
-my_linked_list.get_length()
-my_linked_list.append(100)
-my_linked_list.append(200)
+
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
+my_linked_list.prepend(1)
 my_linked_list.get_length()
 my_linked_list.print_list()
 print(my_linked_list.pop())
