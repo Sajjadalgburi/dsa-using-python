@@ -56,10 +56,27 @@ class doubly_linked_list:
         else:
             temp = self.head
             self.head = new_node
-            new_node.next = temp
+            temp.next.prev = new_node
+            new_node.next = temp.next
+            temp.next = None
 
             self.length += 1
             return True
+
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            temp = self.head
+            self.head = temp.next
+            self.prev = None
+            temp.next = None
+
+        self.length -= 1
+        return True
 
 
 # ------ Pop method -------
@@ -70,10 +87,20 @@ class doubly_linked_list:
 # print(list.pop())  # None
 
 # ------ pre-append method -------
+# list = doubly_linked_list(1)
+# list.append(2)
+# list.append(3)
+# list.print_list()
+# list.prepend(0)
+# list.prepend(-1)
+# list.print_list()
+# ------ pop-first method -------
 list = doubly_linked_list(1)
 list.append(2)
 list.append(3)
 list.print_list()
-list.prepend(0)
-list.prepend(-1)
-list.print_list()
+print(list.pop_first())  # True
+list.print_list()  # 2, 3
+print(list.pop_first())  # True
+print(list.pop_first())  # True
+print(list.pop_first())  # None
