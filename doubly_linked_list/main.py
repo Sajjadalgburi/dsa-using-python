@@ -49,6 +49,18 @@ class doubly_linked_list:
         self.length -= 1
         return temp.value
 
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            return self.append(value)
+        else:
+            temp = self.head
+            self.head = new_node
+            new_node.next = temp
+
+            self.length += 1
+            return True
+
 
 # ------ Pop method -------
 # list = doubly_linked_list(1)
@@ -56,3 +68,12 @@ class doubly_linked_list:
 # print(list.pop())  # 2
 # print(list.pop())  # 1
 # print(list.pop())  # None
+
+# ------ pre-append method -------
+list = doubly_linked_list(1)
+list.append(2)
+list.append(3)
+list.print_list()
+list.prepend(0)
+list.prepend(-1)
+list.print_list()
