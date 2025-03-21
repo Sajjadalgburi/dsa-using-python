@@ -1,3 +1,5 @@
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -21,11 +23,10 @@ class doubly_linked_list:
             self.tail.next = new_node
             new_node.prev = self.tail
             self.tail = new_node
-
         self.length += 1
         return True
 
-    def print_list(self):
+    def print_list(self) -> None:
         temp = self.head
         print('\n----')
         while temp is not None:
@@ -34,9 +35,24 @@ class doubly_linked_list:
             temp = temp.next
         print('----\n')
 
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.tail
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
+        self.length -= 1
+        return temp.value
 
-list = doubly_linked_list(1)
-list.append(2)
-list.append(3)
-list.append(4)
-list.print_list()
+
+# ------ Pop method -------
+# list = doubly_linked_list(1)
+# list.append(2)
+# print(list.pop())  # 2
+# print(list.pop())  # 1
+# print(list.pop())  # None
