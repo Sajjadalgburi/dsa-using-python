@@ -78,6 +78,22 @@ class doubly_linked_list:
         self.length -= 1
         return True
 
+    def get(self, index):
+        if index < 0 or index > self.length:
+            return False
+
+        temp = self.head
+
+        if index < self.length / 2:
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
+
+        return temp.value
+
 
 # ------ Pop method -------
 # list = doubly_linked_list(1)
@@ -85,7 +101,6 @@ class doubly_linked_list:
 # print(list.pop())  # 2
 # print(list.pop())  # 1
 # print(list.pop())  # None
-
 # ------ pre-append method -------
 # list = doubly_linked_list(1)
 # list.append(2)
@@ -95,12 +110,20 @@ class doubly_linked_list:
 # list.prepend(-1)
 # list.print_list()
 # ------ pop-first method -------
-list = doubly_linked_list(1)
-list.append(2)
-list.append(3)
-list.print_list()
-print(list.pop_first())  # True
-list.print_list()  # 2, 3
-print(list.pop_first())  # True
-print(list.pop_first())  # True
-print(list.pop_first())  # None
+# list = doubly_linked_list(1)
+# list.append(2)
+# list.append(3)
+# list.print_list()
+# print(list.pop_first())  # True
+# list.print_list()  # 2, 3
+# print(list.pop_first())  # True
+# print(list.pop_first())  # True
+# print(list.pop_first())  # None
+# list = doubly_linked_list(0)
+# list.append(1)
+# list.append(2)
+# list.append(3)
+# list.print_list()
+# print(list.get(1))
+# print(list.get(3))
+# print(list.get(2))
