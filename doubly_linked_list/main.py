@@ -79,7 +79,7 @@ class doubly_linked_list:
         return True
 
     def get(self, index):
-        if index < 0 or index > self.length:
+        if index < 0 or index >= self.length:
             return False
 
         temp = self.head
@@ -92,7 +92,55 @@ class doubly_linked_list:
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
 
-        return temp.value
+        return temp
+
+    def set_node(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+
+        if not self.length:
+            return self.append(value)
+
+        foundNode = self.get(index)
+
+        foundNode.value = value
+
+        return foundNode
+
+    def insert(self, index, value):
+        changeThisNode = self.get(index)
+        if changeThisNode == False:
+            return 'Cannot Do this'
+
+        newNode = Node(value)
+
+        newNode.next = changeThisNode
+        newNode.prev = changeThisNode.prev
+        changeThisNode.prev.next = newNode
+        changeThisNode.prev = newNode
+
+        self.length += 1
+        return newNode
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+
+        if index == 0:
+            return self.pop_first()
+
+        if index == self.length:
+            return self.pop()
+
+        foundNode = self.get(index)
+
+        foundNode.prev.next = foundNode.next
+        foundNode.next.prev = foundNode.prev
+        foundNode.next = None
+        foundNode.prev = None
+
+        self.length -= 1
+        return True
 
 
 # ------ Pop method -------
@@ -127,3 +175,31 @@ class doubly_linked_list:
 # print(list.get(1))
 # print(list.get(3))
 # print(list.get(2))
+# list = doubly_linked_list(0)
+# list.append(1)
+# list.append(2)
+# list.append(3)
+# list.print_list()
+# list.set_node(1, 'Changed')
+# list.set_node(3, 'Changed')
+# list.print_list()
+# list = doubly_linked_list(0)
+# list.append(1)
+# list.append(2)
+# list.append(3)
+# list.append(4)
+# list.append(5)
+# list.print_list()
+# list.insert(222, 'insered here')
+# list.print_list()
+list = doubly_linked_list(0)
+list.append(1)
+list.append(2)
+list.append(3)
+list.append(4)
+list.append(5)
+list.print_list()
+list.remove(3)
+list.print_list()
+list.remove(3)
+list.print_list()
