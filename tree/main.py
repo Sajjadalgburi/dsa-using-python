@@ -71,8 +71,12 @@ class BinarySearchTree:
 
 # Tree Contains method
 tree = BinarySearchTree()
-print(tree.contains(4))  # returns False
-print(tree.contains(9))  # returns True
-print(tree.contains(2))  # returns True
-print(tree.contains(6))  # returns True
-print(tree.contains(0))  # returns False
+tree.insert(47)
+tree.insert(21)
+tree.insert(76)
+tree.insert(18)
+tree.insert(27)
+tree.insert(52)
+tree.insert(82)
+print(tree.contains(27))  # returns True
+print(tree.contains(17))  # returns False
