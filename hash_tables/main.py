@@ -41,10 +41,19 @@ class HashTable:
                     all_keys.append(self.data_map[i][j][0])
         return all_keys
 
+    def is_common(self, list1, list2):
+
+        my_dict = {}
+
+        for i in list1:
+            my_dict[i] = True
+
+        for j in list2:
+            if j in my_dict:
+                return True
+
+        return False
+
 
 my_hash = HashTable()
-my_hash.set_item('tampons', 200)
-my_hash.set_item('bolts', 1400)
-my_hash.set_item('lumber', 70)
-my_hash.set_item('weapons', 5)
-print(my_hash.keys())  # ['tampons', 'bolts', 'weapons', 'lumber']
+print(my_hash.is_common([1, 3, 5], [5, 2, 4]))
