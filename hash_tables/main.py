@@ -31,17 +31,20 @@ class HashTable:
 
         return None
 
+    # prints all the keys in the hash table
+    def keys(self):
+        all_keys = []
 
-# Hash Table set method
-# my_hash = HashTable()
-# my_hash.set_item('bolts', 1400)
-# my_hash.set_item('washers', 50)
-# my_hash.set_item('lumber', 70)
-# my_hash.print_table()
-# Hash Table get method
+        for i in range(len(self.data_map)):
+            if self.data_map[i] is not None:
+                for j in range(len(self.data_map[i])):
+                    all_keys.append(self.data_map[i][j][0])
+        return all_keys
+
+
 my_hash = HashTable()
+my_hash.set_item('tampons', 200)
 my_hash.set_item('bolts', 1400)
 my_hash.set_item('lumber', 70)
-print(my_hash.get_item('lumber'))
-print(my_hash.get_item('bolts'))
-print(my_hash.get_item('not there'))
+my_hash.set_item('weapons', 5)
+print(my_hash.keys())  # ['tampons', 'bolts', 'weapons', 'lumber']
