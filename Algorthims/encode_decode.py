@@ -38,27 +38,29 @@ class Solution:
         return output
 
     def decode(self, s: str) -> List[str]:
-        """
-        input:
-        taken an a single encoded string
+        res = []
+        i = 0
 
-        output:
-        an array of the decoded strings
+        while i < len(s):
+            # start collecting the digits (word length)
+            j = i
+            while s[j].isdigit():
+                j += 1
 
-        approach:
-        iterate through the string 
-        1. if we find a number we keep track of it
-        2. once we reach a '#' we can then use the number to grab the char of the same length
-        3. once found, then we append to the output array and return it at the end
-        """
+            # at this point, s[j] is '#'
+            # and s[i:j] is the string representing the number
+            length = int(s[i:j])
 
-        output: List[str] = []
+            # now grab the word
+            word = s[j+1: j+1+length]
 
-        for char in s:
+            # add word to output
+            res.append(word)
 
-            pass
+            # move i to the next encoded word
+            i = j + 1 + length
 
-        return output
+        return res
 
 
 s = Solution()
@@ -79,4 +81,4 @@ Input: "2#we3#say1#:3#yes" ["we","say",":","yes"]
 
 after decode -> ["we","say",":","yes"]
 """
-s.decode(decoded)
+print(s.decode(decoded))
